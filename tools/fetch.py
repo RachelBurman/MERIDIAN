@@ -7,7 +7,7 @@ def fetch_feed(url: str):
     d = feedparser.parse(url)
     results = []
     for entry in d.entries:
-        results.append({"title": entry.title, "url": entry.link, "published_date": entry.published})
+        results.append({"title": entry.title, "url": entry.link, "published_date": entry.published, "category": entry.category})
     return results
 
 #Take a URL, fetch the actual page content, and return the text. 
