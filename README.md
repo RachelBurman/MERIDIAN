@@ -75,7 +75,7 @@ Here is an example brief taken from 14/05/2026
 - [x] Logging
 - [x] Twice daily scheduling
 - [ ] Run as background service — keeps MERIDIAN alive without an open terminal
-- [ ] Domain tag matching — completes urgency scoring
+- [x] Domain tag matching — completes urgency scoring
 - [ ] PDF handling — richer summaries from policy documents
 - [ ] Email delivery — production ready briefings
 
