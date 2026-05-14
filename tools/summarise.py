@@ -1,4 +1,5 @@
 import requests
+import logging
 
 def summarise_document(text: str, doc_type: str)->str:
     if not text: 
@@ -21,8 +22,9 @@ def summarise_document(text: str, doc_type: str)->str:
         "stream": False
         })
         return response.json()["response"]
-    except:
-          return None
+    except Exception as e:
+        logging.error(f"Failed to summarise: {e}")
+        return None
                     
 
 

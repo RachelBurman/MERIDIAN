@@ -1,3 +1,4 @@
+import logging
 from config import URGENCY_THRESHOLD, FCA_FEED_URL
 from db import initialise_db, is_seen, store_document
 from tools.brief import generate_briefing
@@ -8,22 +9,22 @@ from tools.classify import classify_type, score_urgency, classify_title
 def run_agent():
     initialise_db()
     entries = fetch_feed(FCA_FEED_URL)
-    print(f"Fetched {len(entries)} entries...")
+    logging.info(f"Fetched {len(entries)} entries...")
 
     for i in entries:
         if is_seen(i["url"]):
             continue
         else:
-            print(f"Processing: {i['title']}")
+            logging.info(f"Processing: {i['title']}")
             doc_type = classify_type(i["category"])
             urgency = score_urgency(doc_type, [])
             urgency = classify_title(i["title"], urgency)
             if urgency >= URGENCY_THRESHOLD:
-                print(f"Fetching full document...")
+                logging.info(f"Fetching full document...")
                 text = fetch_document(i["url"])
-                print(f"Summarising...")
+                logging.info(f"Summarising...")
                 summary = summarise_document(text, doc_type)
-                print(f"Done.")
+                logging.info(f"Done.")
             else:
                 summary = None
                 
