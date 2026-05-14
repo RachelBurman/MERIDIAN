@@ -50,7 +50,7 @@ git clone https://github.com/RachelBurman/MERIDIAN.git
 cd MERIDIAN
 
 # install dependencies
-pip install requests feedparser schedule pypdf
+pip install requests feedparser schedule pypdf python-dotenv
 
 # pull the LLM
 ollama pull qwen2.5:latest
@@ -74,10 +74,12 @@ Here is an example brief taken from 14/05/2026
 - [x] README + example briefing
 - [x] Logging
 - [x] Twice daily scheduling
-- [ ] Run as background service — keeps MERIDIAN alive without an open terminal
 - [x] Domain tag matching — completes urgency scoring
 - [x] PDF handling — richer summaries from policy documents
-- [ ] Email delivery — production ready briefings
+- [x] Email delivery — production ready briefings
+- [ ] Migrate email to Resend
+- [ ] Run as background service
+- [ ] Library cross-reference — SCALPEL integration
 
 
 ## About
