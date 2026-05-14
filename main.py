@@ -15,6 +15,7 @@ def job():
     end = time.time()
     logging.info(f"Briefing complete in {round(end - start, 2)} seconds.")
 
+job()
 schedule.every().day.at("08:00").do(job)
 schedule.every().day.at("17:00").do(job)
 

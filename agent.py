@@ -5,6 +5,7 @@ from tools.brief import generate_briefing
 from tools.fetch import fetch_document, fetch_feed
 from tools.summarise import summarise_document
 from tools.classify import classify_type, score_urgency, classify_title, detect_domains
+from tools.email import send_briefing
 
 def run_agent():
     initialise_db()
@@ -30,8 +31,8 @@ def run_agent():
                 
             store_document(i["url"], i["title"], doc_type, "", urgency, summary, "FCA", i["published_date"])
    
-    generate_briefing()
-    
+    filepath = generate_briefing()
+    send_briefing(filepath)
 
     
              
