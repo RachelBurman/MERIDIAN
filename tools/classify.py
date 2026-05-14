@@ -44,3 +44,5 @@ def classify_title(title: str, urgency: int) -> int:
         urgency = 5
     return urgency
     
+def detect_domains(text: str) -> list:
+    return [domain for domain in DOMAINS if domain in text.lower()]

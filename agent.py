@@ -4,7 +4,7 @@ from db import initialise_db, is_seen, store_document
 from tools.brief import generate_briefing
 from tools.fetch import fetch_document, fetch_feed
 from tools.summarise import summarise_document
-from tools.classify import classify_type, score_urgency, classify_title
+from tools.classify import classify_type, score_urgency, classify_title, detect_domains
 
 def run_agent():
     initialise_db()
@@ -17,7 +17,7 @@ def run_agent():
         else:
             logging.info(f"Processing: {i['title']}")
             doc_type = classify_type(i["category"])
-            urgency = score_urgency(doc_type, [])
+            urgency = score_urgency(doc_type, detect_domains(i["title"]))
             urgency = classify_title(i["title"], urgency)
             if urgency >= URGENCY_THRESHOLD:
                 logging.info(f"Fetching full document...")
