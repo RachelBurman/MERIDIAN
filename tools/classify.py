@@ -11,6 +11,9 @@ def classify_type(category: str) -> str:
         "speeches": "speeches",
         "news stories": "news_stories",
         "dear ceo": "dear_ceo",
+        "blogs": "blogs",
+        "press releases": "press_releases",
+        "statements": "statements",
     }
     return type_map.get(category.lower(), "unknown")
 
@@ -23,8 +26,11 @@ def score_urgency(doc_type: str, domain_tags: list):
         "guidance": 2,
         "newsletter": 1,
         "speeches": 3,
-        "news_stories": 1,
+        "news_stories": 3,
         "dear_ceo": 4,
+        "blog": 1,
+        "press_releases": 3,
+        "statements": 3,
     }
     score = type_map.get(doc_type.lower(), 1)
 
