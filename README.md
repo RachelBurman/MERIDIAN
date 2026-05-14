@@ -36,7 +36,7 @@ generate briefing
 | LLM | Qwen 2.5 via Ollama |
 | Database | SQLite |
 | Feed Source | FCA RSS |
-| Key Libraries | feedparser, requests, hashlib, datetime |
+| Key Libraries | feedparser, requests, hashlib, datetime, schedule, pypdf |
 
 ## Getting Started
 
