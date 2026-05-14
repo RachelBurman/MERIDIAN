@@ -23,7 +23,7 @@ def fetch_feed(url: str):
 def fetch_document(url: str):
     try:
         response = requests.get(url, timeout=10)
-        if url.endswith(".pdf"):
+        if "application/pdf" in response.headers.get("Content-Type", ""):
             with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
                 tmp.write(response.content)
                 tmp_path = tmp.name
