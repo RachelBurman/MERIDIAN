@@ -1,4 +1,4 @@
-from config import DOMAINS
+from config import DOMAINS, KEYWORDS
 
 
 def classify_type(category: str) -> str:
@@ -39,4 +39,8 @@ def score_urgency(doc_type: str, domain_tags: list):
 
     return score
 
-
+def classify_title(title: str, urgency: int) -> int:
+    if any(keyword in title.lower() for keyword in KEYWORDS):
+        urgency = 5
+    return urgency
+    

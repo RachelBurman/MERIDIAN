@@ -14,3 +14,8 @@ DOMAINS = [
     "data",
     "AI"
 ]
+KEYWORDS = [
+    "fines", "banned", "bans", "arrested", "charges", 
+    "charged", "restrictions", "convicted", "sentenced",
+    "cancelled", "withdrawn", "liquidation"
+]
