@@ -1,6 +1,9 @@
 import feedparser
 import requests
 import logging
+import pypdf
+import tempfile
+
 #Pull the FCA's RSS feed and return a list of items
 #each item should have a title, URL, and publication date at minimum.
 #feedparse
@@ -19,7 +22,18 @@ def fetch_feed(url: str):
 #requests.
 def fetch_document(url: str):
     try:
-        return requests.get(url, timeout=10).text
+        response = requests.get(url, timeout=10)
+        if url.endswith(".pdf"):
+            with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
+                tmp.write(response.content)
+                tmp_path = tmp.name
+                reader = pypdf.PdfReader(tmp_path)
+                text = ""
+                for page in reader.pages:
+                    text += page.extract_text()
+            return text
+        else:
+            return response.text
     except Exception as e:
         logging.error(f"Failed to fetch document: {e}")
         return None
