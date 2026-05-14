@@ -71,11 +71,13 @@ Here is an example brief taken from 14/05/2026
 - [x] Core agentic pipeline — fetch, classify, summarise, brief
 - [x] Title-based keyword urgency classification
 - [x] Error handling and timeouts
-- [ ] Scheduling — automated daily runs
+- [x] README + example briefing
+- [x] Logging
+- [x] Twice daily scheduling
+- [ ] Run as background service — keeps MERIDIAN alive without an open terminal
 - [ ] Domain tag matching — completes urgency scoring
 - [ ] PDF handling — richer summaries from policy documents
 - [ ] Email delivery — production ready briefings
-- [ ] Logging — replace print statements with proper log levels
 
 
 ## About
