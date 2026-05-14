@@ -7,7 +7,6 @@ def fetch_feed(url: str):
     d = feedparser.parse(url)
     results = []
     for entry in d.entries:
-        print(entry.tags)  # temporary debug line
         results.append({"title": entry.title, "url": entry.link, "published_date": entry.published, "category": entry.tags[0]["term"] if entry.tags else "unknown"})
     return results
 
