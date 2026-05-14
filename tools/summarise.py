@@ -1,6 +1,9 @@
 import requests
 
 def summarise_document(text: str, doc_type: str)->str:
+    if not text: 
+     return None
+        
     prompt = f"""You are a regulatory intelligence assistant.
                 Summarise the following FCA {doc_type} in exactly three sentences:
                 1. What this document is and what it covers
@@ -9,6 +12,8 @@ def summarise_document(text: str, doc_type: str)->str:
 
                 Document:
                 {text[:3000]}"""
+    
+    
     try:
         response = requests.post("http://localhost:11434/api/generate", json={
         "model": "qwen2.5:latest",
