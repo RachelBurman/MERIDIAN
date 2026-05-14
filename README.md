@@ -50,7 +50,7 @@ git clone https://github.com/RachelBurman/MERIDIAN.git
 cd MERIDIAN
 
 # install dependencies
-pip install requests feedparser
+pip install requests feedparser schedule pypdf
 
 # pull the LLM
 ollama pull qwen2.5:latest
