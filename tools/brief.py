@@ -40,7 +40,7 @@ def generate_briefing():
 
     filepath = f"briefings/meridian_{datetime.now(timezone.utc).strftime('%Y-%m-%d_%H%M')}.md"
     os.makedirs("briefings", exist_ok=True) 
-    with open(filepath, "w") as f:
+    with open(filepath, "w", encoding="utf-8") as f:
         f.write(content)
     return filepath
 
