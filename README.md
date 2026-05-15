@@ -26,6 +26,8 @@ for each document:
     store document in db
 ↓
 generate briefing
+↓
+email briefing
 ```
 
 ## Tech Stack
@@ -37,12 +39,14 @@ generate briefing
 | Database | SQLite |
 | Feed Source | FCA RSS |
 | Key Libraries | feedparser, requests, hashlib, datetime, schedule, pypdf |
+| Email | Resend |
 
 ## Getting Started
 
 **Prerequisites**
 - Python 3.14+
 - [Ollama](https://ollama.com) installed and running
+- [Resend](https://resend.com) make an account and get an API key
 
 ```bash
 # clone repo
@@ -50,7 +54,7 @@ git clone https://github.com/RachelBurman/MERIDIAN.git
 cd MERIDIAN
 
 # install dependencies
-pip install requests feedparser schedule pypdf python-dotenv
+pip install requests feedparser schedule pypdf python-dotenv resend
 
 # pull the LLM
 ollama pull qwen2.5:latest
@@ -61,6 +65,14 @@ mkdir data
 # run MERIDIAN
 python main.py
 ```
+
+Create a `.env` file in the project root:
+````
+RESEND_API_KEY=re_xxxxxxxxxxxx
+RESEND_FROM=you@yourdomain.com
+RESEND_RECIPIENT=your@email.com
+````
+
 
 ### Example Reports
 Here is an example brief taken from 14/05/2026
@@ -77,7 +89,7 @@ Here is an example brief taken from 14/05/2026
 - [x] Domain tag matching — completes urgency scoring
 - [x] PDF handling — richer summaries from policy documents
 - [x] Email delivery — production ready briefings
-- [ ] Migrate email to Resend
+- [x] Migrate email to Resend
 - [ ] Run as background service
 - [ ] Library cross-reference — SCALPEL integration
 
